@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Evolution of Coding for Data Scientists</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+  :root {
+    --r-background-color: #1a1a2e;
+    --r-main-color: #e0e0e0;
+    --r-heading-color: #ffffff;
+  }
+  .reveal { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  .reveal h1 { font-size: 2.2em; color: #60a5fa; }
+  .reveal h2 { font-size: 1.6em; color: #60a5fa; margin-bottom: 0.5em; }
+  .reveal h3 { font-size: 1.1em; color: #93c5fd; margin-bottom: 0.3em; }
+  .reveal p, .reveal li { font-size: 0.7em; line-height: 1.5; }
+  .reveal .small { font-size: 0.55em; }
+  .reveal .highlight { color: #fbbf24; font-weight: bold; }
+  .reveal .green { color: #34d399; }
+  .reveal .red { color: #f87171; }
+  .reveal .blue { color: #60a5fa; }
+  .reveal .purple { color: #a78bfa; }
+
+  .timeline {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin: 1em 0; padding: 0; position: relative;
+  }
+  .timeline::before {
+    content: ''; position: absolute; top: 28px; left: 2%; right: 2%;
+    height: 3px; background: linear-gradient(90deg, #f87171, #fbbf24, #34d399, #60a5fa, #a78bfa);
+  }
+  .timeline-item {
+    text-align: center; flex: 1; position: relative; z-index: 1;
+  }
+  .timeline-item .dot {
+    width: 16px; height: 16px; border-radius: 50%;
+    margin: 20px auto 8px; border: 2px solid #fff;
+  }
+  .timeline-item .year { font-size: 0.5em; color: #93c5fd; font-weight: bold; }
+  .timeline-item .label { font-size: 0.4em; color: #d1d5db; margin-top: 2px; }
+
+  .era-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; margin-top: 0.5em; }
+  .era-card {
+    background: rgba(255,255,255,0.05); border-radius: 12px; padding: 0.8em 1em;
+    border-left: 4px solid #60a5fa; text-align: left;
+  }
+  .era-card h3 { margin: 0 0 0.3em 0; font-size: 0.75em; }
+  .era-card p { font-size: 0.52em; margin: 0.2em 0; }
+  .era-card code {
+    background: rgba(96,165,250,0.15); padding: 1px 6px; border-radius: 4px;
+    font-size: 0.85em; color: #93c5fd;
+  }
+  .era-card.red-border { border-left-color: #f87171; }
+  .era-card.yellow-border { border-left-color: #fbbf24; }
+  .era-card.green-border { border-left-color: #34d399; }
+  .era-card.purple-border { border-left-color: #a78bfa; }
+
+  .code-compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.5em;
+  }
+  .code-box {
+    background: #0d1117; border-radius: 10px; padding: 0.6em 0.8em;
+    text-align: left; font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.42em; line-height: 1.6; color: #c9d1d9; overflow: hidden;
+  }
+  .code-box .title {
+    color: #8b949e; font-family: 'Segoe UI', sans-serif;
+    font-size: 1.1em; margin-bottom: 0.5em; font-weight: 600;
+  }
+  .code-box .kw { color: #ff7b72; }
+  .code-box .fn { color: #d2a8ff; }
+  .code-box .str { color: #a5d6ff; }
+  .code-box .cm { color: #8b949e; }
+  .code-box .num { color: #79c0ff; }
+
+  .stat-row { display: flex; justify-content: center; gap: 2em; margin: 0.8em 0; }
+  .stat-box { text-align: center; }
+  .stat-box .number { font-size: 2em; font-weight: 800; }
+  .stat-box .label { font-size: 0.5em; color: #9ca3af; margin-top: 0.2em; }
+
+  .quote {
+    font-size: 1.1em; font-style: italic; color: #fbbf24;
+    border-left: 4px solid #fbbf24; padding-left: 0.8em;
+    margin: 0.8em auto; max-width: 80%; text-align: left;
+  }
+
+  .takeaway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.6em; }
+  .takeaway-card {
+    background: rgba(255,255,255,0.05); border-radius: 12px;
+    padding: 0.7em 1em; text-align: center;
+  }
+  .takeaway-card .icon { font-size: 1.8em; margin-bottom: 0.2em; }
+  .takeaway-card h3 { font-size: 0.7em; margin: 0.2em 0; color: #60a5fa; }
+  .takeaway-card p { font-size: 0.48em; margin: 0; color: #d1d5db; }
+
+  .evolution-row {
+    display: flex; align-items: center; gap: 0.3em;
+    margin: 0.25em 0; font-size: 0.55em;
+  }
+  .evolution-row .era-label {
+    width: 130px; text-align: right; color: #9ca3af; flex-shrink: 0;
+  }
+  .evolution-row .arrow { color: #4b5563; flex-shrink: 0; }
+  .evolution-row .role { color: #e0e0e0; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1: Title -->
+<section>
+  <h1>The Evolution of Coding<br>for Data Scientists</h1>
+  <p style="font-size:0.9em; color:#9ca3af; margin-top:0.5em;">From Notepad to AI Agents: How the Same Task Changed Over 8 Years</p>
+
+  <div class="timeline" style="margin-top:2em;">
+    <div class="timeline-item">
+      <div class="year">2016</div>
+      <div class="dot" style="background:#f87171;"></div>
+      <div class="label">Notepad +<br>Terminal</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2018</div>
+      <div class="dot" style="background:#fb923c;"></div>
+      <div class="label">Jupyter<br>Notebooks</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2019</div>
+      <div class="dot" style="background:#fbbf24;"></div>
+      <div class="label">IDE<br>Revolution</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2020</div>
+      <div class="dot" style="background:#4ade80;"></div>
+      <div class="label">Stack<br>Overflow</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2023</div>
+      <div class="dot" style="background:#60a5fa;"></div>
+      <div class="label">ChatGPT</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2024</div>
+      <div class="dot" style="background:#818cf8;"></div>
+      <div class="label">Cursor /<br>AI IDE</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2025</div>
+      <div class="dot" style="background:#a78bfa;"></div>
+      <div class="label">Claude<br>Code</div>
+    </div>
+  </div>
+
+  <p style="font-size:0.6em; color:#6b7280; margin-top:1.5em;">One task. Seven eras. Same CSV file.</p>
+</section>
+
+<!-- SLIDE 2: Era 1 & 2 — The Foundations -->
+<section>
+  <h2>The Foundations</h2>
+
+  <div class="code-compare">
+    <div>
+      <div class="era-card red-border">
+        <h3><span class="red">Era 1:</span> Notepad + Terminal (2016-2018)</h3>
+        <p>No autocomplete. No syntax highlighting. Just you and the Python docs.</p>
+      </div>
+      <div class="code-box" style="margin-top:0.6em;">
+        <div class="title">era_1_notepad_terminal.py</div>
+        <span class="cm"># Read CSV manually — no pandas</span><br>
+        <span class="kw">import</span> csv, os, sys<br><br>
+        f = <span class="fn">open</span>(<span class="str">"data/marketing.csv"</span>, <span class="str">"r"</span>)<br>
+        reader = csv.<span class="fn">DictReader</span>(f)<br>
+        data = []<br>
+        <span class="kw">for</span> row <span class="kw">in</span> reader:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;data.<span class="fn">append</span>(row)<br>
+        f.<span class="fn">close</span>()<br><br>
+        <span class="cm"># Aggregate manually with dicts</span><br>
+        channel_spend = {}<br>
+        <span class="kw">for</span> row <span class="kw">in</span> data:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;ch = row[<span class="str">"channel"</span>]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> ch <span class="kw">not in</span> channel_spend:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel_spend[ch] = <span class="num">0.0</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;channel_spend[ch] += <span class="fn">float</span>(row[<span class="str">"spend"</span>])<br>
+        <span class="cm"># ... 160 lines total</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="era-card yellow-border" style="border-left-color:#fb923c;">
+        <h3><span style="color:#fb923c;">Era 2:</span> Jupyter Notebooks (2018-2019)</h3>
+        <p>Cell-by-cell exploration. Inline plots. Pandas arrives.</p>
+      </div>
+      <div class="code-box" style="margin-top:0.6em;">
+        <div class="title">era_2_jupyter.ipynb</div>
+        <span class="kw">import</span> pandas <span class="kw">as</span> pd<br>
+        <span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt<br>
+        %matplotlib inline<br><br>
+        <span class="cm"># One line replaces 15</span><br>
+        df = pd.<span class="fn">read_csv</span>(<span class="str">"data/marketing.csv"</span>)<br>
+        df.<span class="fn">head</span>()<br><br>
+        <span class="cm"># One line replaces 30</span><br>
+        summary = df.<span class="fn">groupby</span>(<span class="str">"channel"</span>).<span class="fn">agg</span>({<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"spend"</span>: <span class="str">"sum"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"revenue"</span>: <span class="str">"sum"</span><br>
+        })<br><br>
+        <span class="cm"># See plots inline — instant!</span><br>
+        summary.<span class="fn">plot</span>(kind=<span class="str">"bar"</span>)<br>
+        plt.<span class="fn">show</span>()<br>
+        <span class="cm"># ~50 lines total</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-row" style="margin-top:0.8em;">
+    <div class="stat-box">
+      <div class="number red">160</div>
+      <div class="label">Lines — Era 1</div>
+    </div>
+    <div class="stat-box">
+      <div class="number" style="color:#4ade80;">50</div>
+      <div class="label">Lines — Era 2</div>
+    </div>
+    <div class="stat-box">
+      <div class="number" style="color:#fbbf24;">3x</div>
+      <div class="label">Productivity Gain</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: Era 3 & 4 — Tools Get Smarter -->
+<section>
+  <h2>Tools Get Smarter, Humans Search Better</h2>
+
+  <div class="era-grid">
+    <div class="era-card yellow-border">
+      <h3><span class="highlight">Era 3:</span> IDE Revolution (2019-2020)</h3>
+      <p><strong>VS Code / PyCharm</strong> transform the workflow:</p>
+      <p>&#x2022; <code>IntelliSense</code> — autocomplete with parameter hints</p>
+      <p>&#x2022; <code>Linting</code> — red squiggles catch errors before you run</p>
+      <p>&#x2022; <code>Debugger</code> — breakpoints, variable inspection</p>
+      <p>&#x2022; <code>Virtual envs</code> — reproducible environments</p>
+      <p>&#x2022; <code>Git integration</code> — visual diffs, branch switching</p>
+      <p style="margin-top:0.5em; color:#fbbf24; font-weight:600;">
+        "The tool got smarter, but YOU still write every line."
+      </p>
+    </div>
+
+    <div class="era-card green-border">
+      <h3><span class="green">Era 4:</span> Stack Overflow (2020-2021)</h3>
+      <p><strong>The real workflow:</strong></p>
+      <p>&#x2022; Google: <code>"matplotlib two y-axes same plot"</code></p>
+      <p>&#x2022; Click first SO result (450K views)</p>
+      <p>&#x2022; Copy the accepted answer</p>
+      <p>&#x2022; Paste, change variable names</p>
+      <p>&#x2022; Pray it works</p>
+      <p>&#x2022; If not, try the second answer</p>
+      <p style="margin-top:0.5em; color:#34d399; font-weight:600;">
+        "Someone already solved it — you just need to find it."
+      </p>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:0.8em;">
+    <p style="font-size:0.65em; color:#9ca3af;">
+      <span class="highlight">The irony of Era 4:</span> Charts got <em>better</em> (copied from better examples),
+      but time got <em>worse</em> — <span class="red">45 min coding, 2 hours on Stack Overflow</span>
+    </p>
+  </div>
+</section>
+
+<!-- SLIDE 4: Era 5 & 6 — AI Arrives -->
+<section>
+  <h2>AI Changes Everything</h2>
+
+  <div class="code-compare">
+    <div>
+      <div class="era-card" style="border-left-color:#60a5fa;">
+        <h3><span class="blue">Era 5:</span> ChatGPT (2023)</h3>
+        <p>Describe WHAT you want. AI writes HOW.</p>
+      </div>
+      <div class="code-box" style="margin-top:0.6em;">
+        <div class="title">The Prompt (15 seconds)</div>
+        <span class="str">"I have a CSV with columns: date, channel,</span><br>
+        <span class="str"> impressions, clicks, conversions, spend,</span><br>
+        <span class="str"> revenue.</span><br><br>
+        <span class="str"> Write a Python script that:</span><br>
+        <span class="str"> 1. Loads and shows basic statistics</span><br>
+        <span class="str"> 2. Bar chart of spend vs revenue</span><br>
+        <span class="str"> 3. Monthly revenue trend</span><br>
+        <span class="str"> 4. ROI and CTR per channel</span><br>
+        <span class="str"> Use pandas + matplotlib."</span><br><br>
+        <span class="cm">→ Complete working script. First try.</span><br>
+        <span class="cm">→ 105 lines of clean, professional code.</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="era-card purple-border">
+        <h3><span class="purple">Era 6:</span> Cursor / AI IDE (2024)</h3>
+        <p>AI moves INTO your editor. Sees your whole project.</p>
+      </div>
+      <div class="code-box" style="margin-top:0.6em;">
+        <div class="title">The Workflow</div>
+        <span class="cm"># Type a comment:</span><br>
+        <span class="cm"># Create a 4-panel dashboard</span><br>
+        <span class="cm"># comparing channel metrics</span><br><br>
+        <span class="cm"># Press Tab → entire function appears</span><br>
+        <span class="cm"># AI already knows your PALETTE dict</span><br>
+        <span class="cm"># from line 20 of this file</span><br><br>
+        <span class="cm"># Select code → Cmd+K:</span><br>
+        <span class="str">"add rolling average overlay"</span><br>
+        <span class="cm">→ Done. In-place edit.</span><br><br>
+        <span class="cm"># No copy-paste. No browser tabs.</span><br>
+        <span class="cm"># AI suggests analyses you didn't</span><br>
+        <span class="cm"># even think of.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-row" style="margin-top:0.8em;">
+    <div class="stat-box">
+      <div class="number red">2+ hrs</div>
+      <div class="label">Era 1 (Manual)</div>
+    </div>
+    <div class="stat-box">
+      <div class="number" style="color:#fbbf24;">3 hrs</div>
+      <div class="label">Era 4 (SO Search)</div>
+    </div>
+    <div class="stat-box">
+      <div class="number blue">15 sec</div>
+      <div class="label">Era 5 (ChatGPT)</div>
+    </div>
+    <div class="stat-box">
+      <div class="number purple">5 min</div>
+      <div class="label">Era 6 (Full Dashboard)</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: Era 7 — Claude Code / Agentic AI -->
+<section>
+  <h2>Era 7: The Agentic Era (2025-2026)</h2>
+  <h3 style="color:#a78bfa;">Claude Code — AI as Your Builder</h3>
+
+  <div class="era-grid" style="margin-top:0.8em;">
+    <div class="era-card purple-border" style="grid-column: 1 / -1;">
+      <p style="font-size:0.65em;">What makes this different from ChatGPT or Cursor:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5em; margin-top:0.4em;">
+        <p>&#x2022; <strong>Reads</strong> your files, data, and project structure</p>
+        <p>&#x2022; <strong>Writes</strong> code across multiple files at once</p>
+        <p>&#x2022; <strong>Runs</strong> the code and reads the output</p>
+        <p>&#x2022; <strong>Iterates</strong> — fixes errors, adjusts, retries</p>
+        <p>&#x2022; <strong>End-to-end</strong> — from idea to working project</p>
+        <p>&#x2022; <strong>You</strong> are the architect, AI is the builder</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#0d1117; border-radius:12px; padding:0.8em 1.2em; margin-top:0.8em; text-align:left;">
+    <p style="font-size:0.5em; color:#8b949e; margin:0 0 0.4em 0; font-family:monospace;">$ claude</p>
+    <p style="font-size:0.6em; color:#e0e0e0; margin:0 0 0.3em 0;">
+      <span style="color:#a78bfa; font-weight:bold;">You:</span> "Read the marketing CSV, create a comprehensive analysis
+      with 4 visualizations, calculate key KPIs, and save a report."
+    </p>
+    <p style="font-size:0.6em; color:#e0e0e0; margin:0 0 0.3em 0;">
+      <span style="color:#34d399; font-weight:bold;">Claude Code:</span> Reading data/marketing_campaign.csv... 840 rows loaded.
+    </p>
+    <p style="font-size:0.6em; color:#e0e0e0; margin:0 0 0.3em 0;">
+      <span style="color:#34d399; font-weight:bold;">Claude Code:</span> Writing analysis script... Running... 4 plots saved.
+    </p>
+    <p style="font-size:0.6em; color:#e0e0e0; margin:0;">
+      <span style="color:#34d399; font-weight:bold;">Claude Code:</span> Done. Dashboard, trends, heatmap, and scatter plot in plots/.
+    </p>
+  </div>
+
+  <p class="quote" style="margin-top:0.8em;">
+    "This entire presentation — all 7 era scripts, the dataset, 17 charts,
+    and this slide deck — was built by Claude Code in a single conversation."
+  </p>
+</section>
+
+<!-- SLIDE 6: Key Takeaways -->
+<section>
+  <h2>Key Takeaways</h2>
+
+  <div style="max-width:700px; margin:0.8em auto;">
+    <div class="evolution-row">
+      <div class="era-label"><span class="red">Era 1</span> Notepad</div>
+      <div class="arrow">→</div>
+      <div class="role">"I am the coder"</div>
+    </div>
+    <div class="evolution-row">
+      <div class="era-label"><span style="color:#fb923c;">Era 2</span> Jupyter</div>
+      <div class="arrow">→</div>
+      <div class="role">"I think in small steps"</div>
+    </div>
+    <div class="evolution-row">
+      <div class="era-label"><span class="highlight">Era 3</span> IDE</div>
+      <div class="arrow">→</div>
+      <div class="role">"I code with guardrails"</div>
+    </div>
+    <div class="evolution-row">
+      <div class="era-label"><span class="green">Era 4</span> Stack Overflow</div>
+      <div class="arrow">→</div>
+      <div class="role">"I am a great searcher"</div>
+    </div>
+    <div class="evolution-row">
+      <div class="era-label"><span class="blue">Era 5</span> ChatGPT</div>
+      <div class="arrow">→</div>
+      <div class="role">"I am the specifier"</div>
+    </div>
+    <div class="evolution-row">
+      <div class="era-label"><span style="color:#818cf8;">Era 6</span> Cursor</div>
+      <div class="arrow">→</div>
+      <div class="role">"I am the reviewer"</div>
+    </div>
+    <div class="evolution-row">
+      <div class="era-label"><span class="purple">Era 7</span> Claude Code</div>
+      <div class="arrow">→</div>
+      <div class="role">"I am the thinker"</div>
+    </div>
+  </div>
+
+  <div class="takeaway-grid" style="margin-top:1em;">
+    <div class="takeaway-card">
+      <div class="icon">&#x1F9E0;</div>
+      <h3>What Changed</h3>
+      <p>From syntax memorization to problem decomposition.<br>
+        From writing code to describing intent.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="icon">&#x2696;&#xFE0F;</div>
+      <h3>What Stayed the Same</h3>
+      <p>Understand the problem. Know the data.<br>
+        Think critically. Communicate the insight.</p>
+    </div>
+  </div>
+
+  <p class="quote" style="margin-top:0.8em; font-size:0.85em;">
+    "The best data scientists of 2025 aren't the ones who write the most code.<br>
+    They're the ones who ask the best questions."
+  </p>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  transition: 'slide',
+  width: 1200,
+  height: 700,
+  margin: 0.04,
+  center: true,
+});
+</script>
+</body>
+</html>
