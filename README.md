@@ -68,7 +68,24 @@ Synthetic marketing campaign data with realistic patterns:
 Two options for delivery:
 
 1. **Notebook** — Open `evolution_of_coding.ipynb` and walk through each era with runnable code and inline plots
-2. **Slides** — Open `slides.html` in a browser and navigate with arrow keys (reveal.js)
+2. **Slides** — Open `slides.html` in a browser (see below) and scroll through, or use arrow keys to navigate
+
+### Opening the slides
+
+```bash
+# macOS
+open slides.html
+
+# Linux
+xdg-open slides.html
+
+# Windows
+start slides.html
+
+# Or serve locally (avoids any CORS issues with reveal.js CDN)
+python3 -m http.server 8000
+# then open http://localhost:8000/slides.html
+```
 
 Era 7 (Claude Code) is meant to be done **live** — open Claude Code and ask it to analyze the marketing CSV in real time.
 
