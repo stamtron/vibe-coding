@@ -1,5 +1,5 @@
 """
-Era 3: The IDE Revolution (2019-2020)
+Era 3: The IDE Revolution (2016-present, VS Code #1 from 2018)
 =====================================
 Written in VS Code or PyCharm with full IDE support:
 - Autocomplete (IntelliSense) suggests methods as you type

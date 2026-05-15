@@ -1,6 +1,6 @@
 
 """
-Era 6: Cursor / AI IDE (2024)
+Era 6: Cursor / AI IDE (2023-present)
 ==============================
 
 This code was written WITH an AI embedded in the editor.

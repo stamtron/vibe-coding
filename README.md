@@ -8,13 +8,13 @@ A 30–45 minute course that tells the story of how data science coding has tran
 
 | Era | Years | File | What Changed |
 |-----|-------|------|--------------|
-| 1. Notepad + Terminal | 2016–2018 | `era_1_notepad_terminal.py` | Raw Python, `csv` module, manual everything (~160 lines) |
-| 2. Jupyter Notebooks | 2018–2019 | `era_2_jupyter.ipynb` | Interactive cells, inline plots, exploratory workflow (~50 lines) |
-| 3. IDE (VS Code / PyCharm) | 2019–2020 | `era_3_ide.py` | Autocomplete, linting, type hints, structured code |
-| 4. Stack Overflow | 2020–2021 | `era_4_stackoverflow.py` | Copy-paste-modify from SO answers (comments show the sources) |
-| 5. ChatGPT | 2023 | `era_5_chatgpt.py` | Describe what you want, get working code in 15 seconds |
-| 6. Cursor / AI IDE | 2024 | `era_6_cursor.py` | AI embedded in the editor — Tab to accept, Cmd+K to refine |
-| 7. Claude Code | 2025–2026 | Live demo | Natural language → working code, fully agentic |
+| 1. Notepad + Terminal | ~2010–2015 | `era_1_notepad_terminal.py` | Raw Python, `csv` module, manual everything (~160 lines) |
+| 2. Jupyter Notebooks | 2014–present | `era_2_jupyter.ipynb` | Interactive cells, inline plots, exploratory workflow (~50 lines) |
+| 3. IDE (VS Code / PyCharm) | 2016–present | `era_3_ide.py` | Autocomplete, linting, type hints, structured code |
+| 4. Stack Overflow | 2008–2023 | `era_4_stackoverflow.py` | Copy-paste-modify from SO answers (comments show the sources) |
+| 5. ChatGPT | Late 2022–present | `era_5_chatgpt.py` | Describe what you want, get working code in 15 seconds |
+| 6. Cursor / AI IDE | 2023–present | `era_6_cursor.py` | AI embedded in the editor — Tab to accept, Cmd+K to refine |
+| 7. Claude Code | 2025–present | Live demo | Natural language → working code, fully agentic |
 
 ## Quick Start
 

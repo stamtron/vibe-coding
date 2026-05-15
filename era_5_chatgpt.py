@@ -1,5 +1,5 @@
 """
-Era 5: The ChatGPT Era (2023)
+Era 5: The ChatGPT Era (late 2022-present)
 ==============================
 
 PROMPT USED:

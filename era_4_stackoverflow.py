@@ -1,5 +1,5 @@
 """
-Era 4: The Stack Overflow Era (2020-2021)
+Era 4: The Stack Overflow Era (2008-2023, peaked ~2014)
 ==========================================
 The workflow:
   1. Google "how to [thing] in pandas"
