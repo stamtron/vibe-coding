@@ -72,6 +72,20 @@ Two options for delivery:
 
 Era 7 (Claude Code) is meant to be done **live** — open Claude Code and ask it to analyze the marketing CSV in real time.
 
+## Historical Context
+
+Eras overlap — each new tool added to the toolkit rather than replacing the last.
+
+| Era | Key Milestone |
+|-----|---------------|
+| Notepad + Terminal | The pre-tooling era — raw Python, `csv` module, `print()` debugging |
+| Jupyter Notebooks | Spun off from IPython in **2014**; 2.5M notebooks on GitHub by 2018; *Nature* called it a cornerstone of scientific computing |
+| IDE (VS Code / PyCharm) | VS Code launched 2015, became the **#1 IDE in the 2018** Stack Overflow Developer Survey |
+| Stack Overflow | Launched **2008**, peaked at 200K questions/month in 2014; traffic dropped 78% between 2024–2025 after AI tools arrived |
+| ChatGPT | Launched **November 30, 2022** — changed coding workflows overnight |
+| Cursor / AI IDE | Founded **2022**, hit $100M ARR by January 2025; AI moves inside the editor |
+| Claude Code | Preview **February 2025**, GA **May 2025** — fully agentic, reads/writes/runs code end-to-end |
+
 ## Key Takeaway
 
 > The skill shift: from **syntax memorization** to **problem decomposition**.
