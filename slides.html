@@ -12,12 +12,12 @@
     --r-main-color: #e0e0e0;
     --r-heading-color: #ffffff;
   }
-  .reveal { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-  .reveal h1 { font-size: 2.2em; color: #60a5fa; }
-  .reveal h2 { font-size: 1.6em; color: #60a5fa; margin-bottom: 0.5em; }
-  .reveal h3 { font-size: 1.1em; color: #93c5fd; margin-bottom: 0.3em; }
-  .reveal p, .reveal li { font-size: 0.8em; line-height: 1.5; }
-  .reveal .small { font-size: 0.65em; }
+  .reveal { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 24px; }
+  .reveal h1 { font-size: 1.8em; color: #60a5fa; }
+  .reveal h2 { font-size: 1.3em; color: #60a5fa; margin-bottom: 0.5em; }
+  .reveal h3 { font-size: 0.9em; color: #93c5fd; margin-bottom: 0.3em; }
+  .reveal p, .reveal li { font-size: 0.7em; line-height: 1.4; }
+  .reveal .small { font-size: 0.55em; }
   .reveal .highlight { color: #fbbf24; font-weight: bold; }
   .reveal .green { color: #34d399; }
   .reveal .red { color: #f87171; }
@@ -83,10 +83,23 @@
   .stat-box .label { font-size: 0.6em; color: #9ca3af; margin-top: 0.2em; }
 
   .quote {
-    font-size: 1.1em; font-style: italic; color: #fbbf24;
+    font-size: 0.9em; font-style: italic; color: #fbbf24;
     border-left: 4px solid #fbbf24; padding-left: 0.8em;
     margin: 0.8em auto; max-width: 80%; text-align: left;
   }
+
+  .font-controls {
+    position: fixed; top: 10px; right: 10px; z-index: 100;
+    display: flex; gap: 4px; opacity: 0.4; transition: opacity 0.3s;
+  }
+  .font-controls:hover { opacity: 1; }
+  .font-controls button {
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    color: #e0e0e0; border-radius: 4px; width: 28px; height: 28px;
+    cursor: pointer; font-size: 14px; font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .font-controls button:hover { background: rgba(255,255,255,0.3); }
 
   .takeaway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.6em; }
   .takeaway-card {
@@ -109,6 +122,10 @@
 </style>
 </head>
 <body>
+<div class="font-controls">
+  <button onclick="adjustFont(-2)" title="Smaller font">A-</button>
+  <button onclick="adjustFont(2)" title="Larger font">A+</button>
+</div>
 <div class="reveal">
 <div class="slides">
 
@@ -402,7 +419,50 @@
   </p>
 </section>
 
-<!-- SLIDE 7: Key Takeaways -->
+<!-- SLIDE 7: The New Role of the Engineer -->
+<section>
+  <h2>The New Bottleneck</h2>
+  <h3 style="color:#fbbf24;">What Happens When AI Writes the Code?</h3>
+
+  <div class="quote" style="margin-top:1.2em; font-size:0.95em;">
+    "The role of the engineer is fundamentally shifting — from a technical specialist who writes code from scratch to an AI-enabled strategic problem solver."
+    <br><span style="font-size:0.7em; color:#9ca3af; font-style:normal;">— Andrew Ng</span>
+  </div>
+
+  <div class="era-grid" style="margin-top:1.2em;">
+    <div class="era-card red-border">
+      <h3><span class="red">Before AI</span></h3>
+      <p><strong>Bottleneck:</strong> Engineering velocity</p>
+      <p>&#x2022; Writing code was slow and expensive</p>
+      <p>&#x2022; Technical skill = competitive advantage</p>
+      <p>&#x2022; "Can we build this?" was the hard question</p>
+    </div>
+    <div class="era-card green-border">
+      <h3><span class="green">After AI</span></h3>
+      <p><strong>Bottleneck:</strong> Product direction &amp; decision-making</p>
+      <p>&#x2022; AI automates routine coding</p>
+      <p>&#x2022; Strategic thinking = competitive advantage</p>
+      <p>&#x2022; "Should we build this?" is the hard question</p>
+    </div>
+  </div>
+
+  <div class="stat-row" style="margin-top:1em;">
+    <div class="stat-box">
+      <div class="number" style="color:#f87171;">Coding</div>
+      <div class="label">Old bottleneck</div>
+    </div>
+    <div class="stat-box">
+      <div class="number" style="color:#fbbf24; font-size:1.5em;">→</div>
+      <div class="label">&nbsp;</div>
+    </div>
+    <div class="stat-box">
+      <div class="number" style="color:#34d399;">Thinking</div>
+      <div class="label">New bottleneck</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: Key Takeaways -->
 <section>
   <h2>Key Takeaways</h2>
 
@@ -470,6 +530,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script>
+function adjustFont(delta) {
+  var el = document.querySelector('.reveal');
+  var current = parseFloat(getComputedStyle(el).fontSize);
+  el.style.fontSize = (current + delta) + 'px';
+}
 Reveal.initialize({
   hash: true,
   transition: 'slide',

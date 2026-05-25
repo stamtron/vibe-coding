@@ -108,6 +108,12 @@ Eras overlap — each new tool added to the toolkit rather than replacing the la
 > The skill shift: from **syntax memorization** to **problem decomposition**.
 > What hasn't changed: you still need to understand the data and ask the right questions.
 
+## The New Bottleneck
+
+> *"The role of the engineer is fundamentally shifting — from a technical specialist who writes code from scratch to an AI-enabled strategic problem solver."* — **Andrew Ng**
+
+Because AI automates routine coding, engineering velocity has skyrocketed. The bottleneck is no longer *"Can we build this?"* but *"Should we build this?"* — product direction and decision-making are now what separates great engineers from the rest.
+
 ## License
 
 MIT
