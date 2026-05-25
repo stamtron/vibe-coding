@@ -7,7 +7,7 @@ from pathlib import Path
 
 def load_data(filepath: str) -> pd.DataFrame:
     return pd.read_csv(filepath, parse_dates=["date"])
-
+    
 
 def calculate_channel_metrics(df: pd.DataFrame) -> pd.DataFrame:
     summary = df.groupby("channel", as_index=False).agg(
