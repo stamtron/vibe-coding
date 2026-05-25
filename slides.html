@@ -16,8 +16,8 @@
   .reveal h1 { font-size: 2.2em; color: #60a5fa; }
   .reveal h2 { font-size: 1.6em; color: #60a5fa; margin-bottom: 0.5em; }
   .reveal h3 { font-size: 1.1em; color: #93c5fd; margin-bottom: 0.3em; }
-  .reveal p, .reveal li { font-size: 0.7em; line-height: 1.5; }
-  .reveal .small { font-size: 0.55em; }
+  .reveal p, .reveal li { font-size: 0.8em; line-height: 1.5; }
+  .reveal .small { font-size: 0.65em; }
   .reveal .highlight { color: #fbbf24; font-weight: bold; }
   .reveal .green { color: #34d399; }
   .reveal .red { color: #f87171; }
@@ -30,45 +30,46 @@
   }
   .timeline::before {
     content: ''; position: absolute; top: 28px; left: 2%; right: 2%;
-    height: 3px; background: linear-gradient(90deg, #f87171, #fbbf24, #34d399, #60a5fa, #a78bfa);
+    height: 3px; background: linear-gradient(90deg, #f87171, #fbbf24, #34d399, #60a5fa, #818cf8, #a78bfa, #c084fc);
   }
   .timeline-item {
     text-align: center; flex: 1; position: relative; z-index: 1;
   }
   .timeline-item .dot {
-    width: 16px; height: 16px; border-radius: 50%;
-    margin: 20px auto 8px; border: 2px solid #fff;
+    width: 18px; height: 18px; border-radius: 50%;
+    margin: 18px auto 8px; border: 2px solid #fff;
   }
-  .timeline-item .year { font-size: 0.5em; color: #93c5fd; font-weight: bold; }
-  .timeline-item .label { font-size: 0.4em; color: #d1d5db; margin-top: 2px; }
+  .timeline-item .year { font-size: 0.6em; color: #93c5fd; font-weight: bold; }
+  .timeline-item .label { font-size: 0.5em; color: #d1d5db; margin-top: 4px; }
 
   .era-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; margin-top: 0.5em; }
   .era-card {
-    background: rgba(255,255,255,0.05); border-radius: 12px; padding: 0.8em 1em;
+    background: rgba(255,255,255,0.07); border-radius: 12px; padding: 0.8em 1em;
     border-left: 4px solid #60a5fa; text-align: left;
   }
-  .era-card h3 { margin: 0 0 0.3em 0; font-size: 0.75em; }
-  .era-card p { font-size: 0.52em; margin: 0.2em 0; }
+  .era-card h3 { margin: 0 0 0.3em 0; font-size: 0.85em; }
+  .era-card p { font-size: 0.62em; margin: 0.2em 0; }
   .era-card code {
-    background: rgba(96,165,250,0.15); padding: 1px 6px; border-radius: 4px;
-    font-size: 0.85em; color: #93c5fd;
+    background: rgba(96,165,250,0.2); padding: 2px 7px; border-radius: 4px;
+    font-size: 0.9em; color: #93c5fd;
   }
   .era-card.red-border { border-left-color: #f87171; }
   .era-card.yellow-border { border-left-color: #fbbf24; }
   .era-card.green-border { border-left-color: #34d399; }
   .era-card.purple-border { border-left-color: #a78bfa; }
+  .era-card.cyan-border { border-left-color: #22d3ee; }
 
   .code-compare {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.5em;
   }
   .code-box {
-    background: #0d1117; border-radius: 10px; padding: 0.6em 0.8em;
+    background: #0d1117; border-radius: 10px; padding: 0.7em 0.9em;
     text-align: left; font-family: 'Fira Code', 'Cascadia Code', monospace;
-    font-size: 0.42em; line-height: 1.6; color: #c9d1d9; overflow: hidden;
+    font-size: 0.5em; line-height: 1.7; color: #c9d1d9; overflow: hidden;
   }
   .code-box .title {
     color: #8b949e; font-family: 'Segoe UI', sans-serif;
-    font-size: 1.1em; margin-bottom: 0.5em; font-weight: 600;
+    font-size: 1.15em; margin-bottom: 0.5em; font-weight: 600;
   }
   .code-box .kw { color: #ff7b72; }
   .code-box .fn { color: #d2a8ff; }
@@ -79,7 +80,7 @@
   .stat-row { display: flex; justify-content: center; gap: 2em; margin: 0.8em 0; }
   .stat-box { text-align: center; }
   .stat-box .number { font-size: 2em; font-weight: 800; }
-  .stat-box .label { font-size: 0.5em; color: #9ca3af; margin-top: 0.2em; }
+  .stat-box .label { font-size: 0.6em; color: #9ca3af; margin-top: 0.2em; }
 
   .quote {
     font-size: 1.1em; font-style: italic; color: #fbbf24;
@@ -89,19 +90,19 @@
 
   .takeaway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.6em; }
   .takeaway-card {
-    background: rgba(255,255,255,0.05); border-radius: 12px;
+    background: rgba(255,255,255,0.07); border-radius: 12px;
     padding: 0.7em 1em; text-align: center;
   }
   .takeaway-card .icon { font-size: 1.8em; margin-bottom: 0.2em; }
-  .takeaway-card h3 { font-size: 0.7em; margin: 0.2em 0; color: #60a5fa; }
-  .takeaway-card p { font-size: 0.48em; margin: 0; color: #d1d5db; }
+  .takeaway-card h3 { font-size: 0.75em; margin: 0.2em 0; color: #60a5fa; }
+  .takeaway-card p { font-size: 0.58em; margin: 0; color: #d1d5db; }
 
   .evolution-row {
     display: flex; align-items: center; gap: 0.3em;
-    margin: 0.25em 0; font-size: 0.55em;
+    margin: 0.3em 0; font-size: 0.65em;
   }
   .evolution-row .era-label {
-    width: 130px; text-align: right; color: #9ca3af; flex-shrink: 0;
+    width: 140px; text-align: right; color: #9ca3af; flex-shrink: 0;
   }
   .evolution-row .arrow { color: #4b5563; flex-shrink: 0; }
   .evolution-row .role { color: #e0e0e0; font-weight: 600; }
@@ -133,6 +134,11 @@
       <div class="label">IDE<br>Revolution</div>
     </div>
     <div class="timeline-item">
+      <div class="year">2021</div>
+      <div class="dot" style="background:#22d3ee;"></div>
+      <div class="label">GitHub<br>Copilot</div>
+    </div>
+    <div class="timeline-item">
       <div class="year">2022</div>
       <div class="dot" style="background:#60a5fa;"></div>
       <div class="label">ChatGPT</div>
@@ -149,7 +155,7 @@
     </div>
   </div>
 
-  <p style="font-size:0.6em; color:#6b7280; margin-top:1.5em;">One task. Six eras. Same CSV file.</p>
+  <p style="font-size:0.65em; color:#6b7280; margin-top:1.5em;">One task. Seven eras. Same CSV file.</p>
 </section>
 
 <!-- SLIDE 2: Era 1 & 2 — The Foundations -->
@@ -164,29 +170,24 @@
       </div>
       <div class="code-box" style="margin-top:0.6em;">
         <div class="title">era_1_notepad_terminal.py</div>
-        <span class="cm"># Read CSV manually — no pandas</span><br>
-        <span class="kw">import</span> csv, os, sys<br><br>
-        f = <span class="fn">open</span>(<span class="str">"data/marketing.csv"</span>, <span class="str">"r"</span>)<br>
-        reader = csv.<span class="fn">DictReader</span>(f)<br>
-        data = []<br>
-        <span class="kw">for</span> row <span class="kw">in</span> reader:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;data.<span class="fn">append</span>(row)<br>
-        f.<span class="fn">close</span>()<br><br>
-        <span class="cm"># Aggregate manually with dicts</span><br>
-        channel_spend = {}<br>
-        <span class="kw">for</span> row <span class="kw">in</span> data:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;ch = row[<span class="str">"channel"</span>]<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> ch <span class="kw">not in</span> channel_spend:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel_spend[ch] = <span class="num">0.0</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;channel_spend[ch] += <span class="fn">float</span>(row[<span class="str">"spend"</span>])<br>
-        <span class="cm"># ... 160 lines total</span>
+        <span class="kw">import</span> os<br>
+        <span class="kw">import</span> pandas <span class="kw">as</span> pd<br>
+        <span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt<br><br>
+        df = pd.<span class="fn">read_csv</span>(<span class="str">"data/marketing.csv"</span>)<br><br>
+        <span class="cm"># Aggregate with groupby</span><br>
+        summary = df.<span class="fn">groupby</span>(<span class="str">'channel'</span>).<span class="fn">agg</span>(<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;spend=(<span class="str">'spend'</span>, <span class="str">'sum'</span>),<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;revenue=(<span class="str">'revenue'</span>, <span class="str">'sum'</span>)<br>
+        )<br>
+        summary[<span class="str">'roi'</span>] = ((summary[<span class="str">'revenue'</span>] - summary[<span class="str">'spend'</span>]) / summary[<span class="str">'spend'</span>]) * <span class="num">100</span><br>
+        <span class="cm"># Manual formatting + matplotlib</span>
       </div>
     </div>
 
     <div>
       <div class="era-card yellow-border" style="border-left-color:#fb923c;">
         <h3><span style="color:#fb923c;">Era 2:</span> Jupyter Notebooks (2014-present)</h3>
-        <p>Cell-by-cell exploration. Inline plots. Pandas arrives.</p>
+        <p>Cell-by-cell exploration. Inline plots. Interactive workflow.</p>
       </div>
       <div class="code-box" style="margin-top:0.6em;">
         <div class="title">era_2_jupyter.ipynb</div>
@@ -243,11 +244,11 @@
     </div>
 
     <div class="era-card green-border">
-      <h3><span class="green">The Stack Overflow Loop</span> (the constant companion before ChatGPT)</h3>
-      <p style="font-size:0.58em; color:#d1d5db; margin-bottom:0.3em;">Across <em>every</em> era before AI, this was the real workflow:</p>
+      <h3><span class="green">The Stack Overflow Loop</span> (the constant companion before AI)</h3>
+      <p style="font-size:0.65em; color:#d1d5db; margin-bottom:0.3em;">Across <em>every</em> era before AI, this was the real workflow:</p>
       <p><span class="green" style="font-weight:bold;">1.</span> Google <code>"how to [thing] in pandas"</code></p>
       <p><span class="green" style="font-weight:bold;">2.</span> Click first Stack Overflow result</p>
-      <p><span class="green" style="font-weight:bold;">3.</span> Copy the accepted answer <span style="font-size:0.85em;">(green checkmark = must be correct, right?)</span></p>
+      <p><span class="green" style="font-weight:bold;">3.</span> Copy the accepted answer <span style="font-size:0.9em;">(green checkmark = must be correct, right?)</span></p>
       <p><span class="green" style="font-weight:bold;">4.</span> Paste into your script</p>
       <p><span class="green" style="font-weight:bold;">5.</span> Modify variable names to match your data</p>
       <p><span class="green" style="font-weight:bold;">6.</span> Pray it works</p>
@@ -259,14 +260,35 @@
   </div>
 </section>
 
-<!-- SLIDE 4: Era 4 & 5 — AI Arrives -->
+<!-- SLIDE 4: Copilot & ChatGPT — AI Arrives -->
 <section>
   <h2>AI Changes Everything</h2>
 
   <div class="code-compare">
     <div>
+      <div class="era-card cyan-border">
+        <h3><span style="color:#22d3ee;">Era 4:</span> GitHub Copilot (2021-present)</h3>
+        <p>AI autocomplete in your editor. Write a comment, get a function.</p>
+      </div>
+      <div class="code-box" style="margin-top:0.6em;">
+        <div class="title">The Copilot Workflow</div>
+        <span class="cm"># Type a comment or function signature:</span><br>
+        <span class="kw">def</span> <span class="fn">calculate_roi_by_channel</span>(df):<br><br>
+        <span class="cm"># Copilot suggests the entire body</span><br>
+        <span class="cm"># Press Tab → accept suggestion</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;summary = df.<span class="fn">groupby</span>(<span class="str">'channel'</span>).<span class="fn">agg</span>(<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spend=(<span class="str">'spend'</span>, <span class="str">'sum'</span>),<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;revenue=(<span class="str">'revenue'</span>, <span class="str">'sum'</span>)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;summary[<span class="str">'roi'</span>] = ...<br><br>
+        <span class="cm"># Trained on public repos — knows patterns</span><br>
+        <span class="cm"># Still line-by-line, but much faster</span>
+      </div>
+    </div>
+
+    <div>
       <div class="era-card" style="border-left-color:#60a5fa;">
-        <h3><span class="blue">Era 4:</span> ChatGPT (Late 2022-present)</h3>
+        <h3><span class="blue">Era 5:</span> ChatGPT (Late 2022-present)</h3>
         <p>Describe WHAT you want. AI writes HOW.</p>
       </div>
       <div class="code-box" style="margin-top:0.6em;">
@@ -284,28 +306,6 @@
         <span class="cm">→ 105 lines of clean, professional code.</span>
       </div>
     </div>
-
-    <div>
-      <div class="era-card purple-border">
-        <h3><span class="purple">Era 5:</span> Cursor / AI IDE (2023-present)</h3>
-        <p>AI moves INTO your editor. Sees your whole project.</p>
-      </div>
-      <div class="code-box" style="margin-top:0.6em;">
-        <div class="title">The Workflow</div>
-        <span class="cm"># Type a comment:</span><br>
-        <span class="cm"># Create a 4-panel dashboard</span><br>
-        <span class="cm"># comparing channel metrics</span><br><br>
-        <span class="cm"># Press Tab → entire function appears</span><br>
-        <span class="cm"># AI already knows your PALETTE dict</span><br>
-        <span class="cm"># from line 20 of this file</span><br><br>
-        <span class="cm"># Select code → Cmd+K:</span><br>
-        <span class="str">"add rolling average overlay"</span><br>
-        <span class="cm">→ Done. In-place edit.</span><br><br>
-        <span class="cm"># No copy-paste. No browser tabs.</span><br>
-        <span class="cm"># AI suggests analyses you didn't</span><br>
-        <span class="cm"># even think of.</span>
-      </div>
-    </div>
   </div>
 
   <div class="stat-row" style="margin-top:0.8em;">
@@ -314,24 +314,60 @@
       <div class="label">Era 1 (Manual)</div>
     </div>
     <div class="stat-box">
-      <div class="number blue">15 sec</div>
-      <div class="label">Era 4 (ChatGPT)</div>
+      <div class="number" style="color:#22d3ee;">30 min</div>
+      <div class="label">Era 4 (Copilot)</div>
     </div>
     <div class="stat-box">
-      <div class="number purple">5 min</div>
-      <div class="label">Era 5 (Full Dashboard)</div>
+      <div class="number blue">15 sec</div>
+      <div class="label">Era 5 (ChatGPT)</div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 5: Era 6 — Claude Code / Agentic AI -->
+<!-- SLIDE 5: Era 6 — Cursor / AI IDE -->
 <section>
-  <h2>Era 6: The Agentic Era (2025-present)</h2>
+  <h2>Era 6: Cursor / AI IDE (2023-present)</h2>
+  <h3 style="color:#818cf8;">AI Moves Inside Your Editor</h3>
+
+  <div class="era-grid" style="margin-top:0.8em;">
+    <div class="era-card purple-border" style="grid-column: 1 / -1;">
+      <p style="font-size:0.7em;">Unlike Copilot (line-by-line autocomplete) or ChatGPT (copy-paste from browser):</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5em; margin-top:0.4em;">
+        <p>&#x2022; <strong>Sees your entire project</strong> — imports, variables, config</p>
+        <p>&#x2022; <strong>Tab to accept</strong> — multi-line suggestions, not just one line</p>
+        <p>&#x2022; <strong>Cmd+K</strong> — select code, describe the change in natural language</p>
+        <p>&#x2022; <strong>AI chat in sidebar</strong> — ask questions about your codebase</p>
+        <p>&#x2022; <strong>In-place edits</strong> — AI rewrites your function directly</p>
+        <p>&#x2022; <strong>No context switching</strong> — no browser tabs, no copy-paste</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#0d1117; border-radius:12px; padding:0.8em 1.2em; margin-top:0.8em; text-align:left;">
+    <p style="font-size:0.55em; color:#8b949e; margin:0 0 0.4em 0; font-family:monospace;">Cursor — era_6_cursor.py</p>
+    <p style="font-size:0.65em; color:#e0e0e0; margin:0 0 0.3em 0;">
+      <span class="cm"># Create a 4-panel dashboard comparing channel metrics</span>
+    </p>
+    <p style="font-size:0.65em; color:#e0e0e0; margin:0 0 0.3em 0;">
+      <span style="color:#818cf8; font-weight:bold;">→ Press Tab</span> — entire function appears, already uses your PALETTE dict from line 20
+    </p>
+    <p style="font-size:0.65em; color:#e0e0e0; margin:0 0 0.3em 0;">
+      <span style="color:#818cf8; font-weight:bold;">→ Select code, Cmd+K:</span> "add rolling average overlay" — done, in-place edit
+    </p>
+    <p style="font-size:0.65em; color:#e0e0e0; margin:0;">
+      <span style="color:#818cf8; font-weight:bold;">→ Result:</span> AI suggests analyses you didn't even think of
+    </p>
+  </div>
+</section>
+
+<!-- SLIDE 6: Era 7 — Claude Code / Agentic AI -->
+<section>
+  <h2>Era 7: The Agentic Era (2025-present)</h2>
   <h3 style="color:#a78bfa;">Claude Code — AI as Your Builder</h3>
 
   <div class="era-grid" style="margin-top:0.8em;">
     <div class="era-card purple-border" style="grid-column: 1 / -1;">
-      <p style="font-size:0.65em;">What makes this different from ChatGPT or Cursor:</p>
+      <p style="font-size:0.7em;">What makes this different from Copilot, ChatGPT, or Cursor:</p>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5em; margin-top:0.4em;">
         <p>&#x2022; <strong>Reads</strong> your files, data, and project structure</p>
         <p>&#x2022; <strong>Writes</strong> code across multiple files at once</p>
@@ -344,18 +380,18 @@
   </div>
 
   <div style="background:#0d1117; border-radius:12px; padding:0.8em 1.2em; margin-top:0.8em; text-align:left;">
-    <p style="font-size:0.5em; color:#8b949e; margin:0 0 0.4em 0; font-family:monospace;">$ claude</p>
-    <p style="font-size:0.6em; color:#e0e0e0; margin:0 0 0.3em 0;">
+    <p style="font-size:0.55em; color:#8b949e; margin:0 0 0.4em 0; font-family:monospace;">$ claude</p>
+    <p style="font-size:0.65em; color:#e0e0e0; margin:0 0 0.3em 0;">
       <span style="color:#a78bfa; font-weight:bold;">You:</span> "Read the marketing CSV, create a comprehensive analysis
       with 4 visualizations, calculate key KPIs, and save a report."
     </p>
-    <p style="font-size:0.6em; color:#e0e0e0; margin:0 0 0.3em 0;">
+    <p style="font-size:0.65em; color:#e0e0e0; margin:0 0 0.3em 0;">
       <span style="color:#34d399; font-weight:bold;">Claude Code:</span> Reading data/marketing_campaign.csv... 840 rows loaded.
     </p>
-    <p style="font-size:0.6em; color:#e0e0e0; margin:0 0 0.3em 0;">
+    <p style="font-size:0.65em; color:#e0e0e0; margin:0 0 0.3em 0;">
       <span style="color:#34d399; font-weight:bold;">Claude Code:</span> Writing analysis script... Running... 4 plots saved.
     </p>
-    <p style="font-size:0.6em; color:#e0e0e0; margin:0;">
+    <p style="font-size:0.65em; color:#e0e0e0; margin:0;">
       <span style="color:#34d399; font-weight:bold;">Claude Code:</span> Done. Dashboard, trends, heatmap, and scatter plot in plots/.
     </p>
   </div>
@@ -366,7 +402,7 @@
   </p>
 </section>
 
-<!-- SLIDE 6: Key Takeaways -->
+<!-- SLIDE 7: Key Takeaways -->
 <section>
   <h2>Key Takeaways</h2>
 
@@ -387,17 +423,22 @@
       <div class="role">"I code with guardrails"</div>
     </div>
     <div class="evolution-row">
-      <div class="era-label"><span class="blue">Era 4</span> ChatGPT</div>
+      <div class="era-label"><span style="color:#22d3ee;">Era 4</span> Copilot</div>
+      <div class="arrow">→</div>
+      <div class="role">"I accept suggestions"</div>
+    </div>
+    <div class="evolution-row">
+      <div class="era-label"><span class="blue">Era 5</span> ChatGPT</div>
       <div class="arrow">→</div>
       <div class="role">"I am the specifier"</div>
     </div>
     <div class="evolution-row">
-      <div class="era-label"><span style="color:#818cf8;">Era 5</span> Cursor</div>
+      <div class="era-label"><span style="color:#818cf8;">Era 6</span> Cursor</div>
       <div class="arrow">→</div>
       <div class="role">"I am the reviewer"</div>
     </div>
     <div class="evolution-row">
-      <div class="era-label"><span class="purple">Era 6</span> Claude Code</div>
+      <div class="era-label"><span class="purple">Era 7</span> Claude Code</div>
       <div class="arrow">→</div>
       <div class="role">"I am the thinker"</div>
     </div>

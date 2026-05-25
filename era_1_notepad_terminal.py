@@ -1,8 +1,8 @@
 # marketing_analysis.py — written in Notepad, run from terminal
 # No IDE, no autocomplete, no linting — just you and the Python docs
 
-import csv
 import os
+import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -12,29 +12,16 @@ if not os.path.exists(filename):
     print("ERROR: Cannot find " + filename)
     exit(1)
 
-data = []
-f = open(filename, 'r')
-reader = csv.DictReader(f)
-for row in reader:
-    data.append(row)
-f.close()
+df = pd.read_csv(filename)
 
-print("Loaded " + str(len(data)) + " rows")
+print("Loaded " + str(len(df)) + " rows")
 
-channel_spend = {}
-channel_revenue = {}
+channel_summary = df.groupby('channel').agg(
+    spend=('spend', 'sum'),
+    revenue=('revenue', 'sum')
+).sort_index()
 
-for row in data:
-    ch = row['channel']
-    spend = float(row['spend'])
-    revenue = float(row['revenue'])
-
-    if ch not in channel_spend:
-        channel_spend[ch] = 0.0
-        channel_revenue[ch] = 0.0
-
-    channel_spend[ch] = channel_spend[ch] + spend
-    channel_revenue[ch] = channel_revenue[ch] + revenue
+channel_summary['roi'] = ((channel_summary['revenue'] - channel_summary['spend']) / channel_summary['spend']) * 100
 
 print("")
 print("=" * 50)
@@ -43,29 +30,21 @@ print("=" * 50)
 print("{:<12} {:>12} {:>12} {:>8}".format("Channel", "Spend ($)", "Revenue ($)", "ROI (%)"))
 print("-" * 50)
 
-for ch in sorted(channel_spend.keys()):
-    s = channel_spend[ch]
-    r = channel_revenue[ch]
-    roi = ((r - s) / s) * 100 if s > 0 else 0
-    print("{:<12} {:>12,.2f} {:>12,.2f} {:>7.1f}%".format(ch, s, r, roi))
+for ch, row in channel_summary.iterrows():
+    print("{:<12} {:>12,.2f} {:>12,.2f} {:>7.1f}%".format(ch, row['spend'], row['revenue'], row['roi']))
 
-monthly_revenue = {}
-for row in data:
-    parts = row['date'].split('-')
-    ym = parts[0] + '-' + parts[1]
-    if ym not in monthly_revenue:
-        monthly_revenue[ym] = 0.0
-    monthly_revenue[ym] += float(row['revenue'])
+df['year_month'] = pd.to_datetime(df['date']).dt.to_period('M')
+monthly_revenue = df.groupby('year_month')['revenue'].sum()
 
-sorted_months = sorted(monthly_revenue.keys())
-month_values = [monthly_revenue[m] for m in sorted_months]
+sorted_months = [str(m) for m in monthly_revenue.index]
+month_values = monthly_revenue.values.tolist()
 
 if not os.path.exists('plots'):
     os.makedirs('plots')
 
-channels_list = sorted(channel_spend.keys())
-spend_vals = [channel_spend[ch] for ch in channels_list]
-rev_vals = [channel_revenue[ch] for ch in channels_list]
+channels_list = channel_summary.index.tolist()
+spend_vals = channel_summary['spend'].tolist()
+rev_vals = channel_summary['revenue'].tolist()
 
 fig = plt.figure(figsize=(10, 6))
 ax = fig.add_subplot(111)
