@@ -17,3 +17,6 @@ Use a consistent color palette per channel. Save to plots/era6_channel_dashboard
 Then to iterate, select the plot code and Cmd+K:
 
 "add value labels on top of the ROAS bars"
+
+
+create a script that analyzes the data and uses seabron for the plots, also add seaborn in the pyproject
